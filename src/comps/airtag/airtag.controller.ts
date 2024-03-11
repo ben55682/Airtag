@@ -26,7 +26,7 @@ export class AirtagController {
   }
 
   @Get('location/:airtagId')
-  public getLocation(@Param('airtagId') airtagId: AirtagIdDto): Promise<PositionDto> {
+  public getLocation(@Param('airtagId') airtagId: number): Promise<PositionDto> {
     return this._airtag.getAirtagLocation(airtagId);
   }
 }

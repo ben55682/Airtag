@@ -38,8 +38,8 @@ export class AirtagService {
     await this._airtagModel.findByIdAndUpdate(locationUpdate.airtagId, {latitude:locationUpdate.latitude, longitude:locationUpdate.longitude})
   }
 
-  public async getAirtagLocation(airtagId: AirtagIdDto):Promise<PositionDto> {
-    return this._airtagModel.findById(airtagId.airtagId).exec().then(res=>{
+  public async getAirtagLocation(airtagId: number):Promise<PositionDto> {
+    return this._airtagModel.findById(airtagId).exec().then(res=>{
       return {latitude:res.latitude,longitude:res.longitude}; 
     })
   }
