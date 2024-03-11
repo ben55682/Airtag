@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { AirtagService } from './airtag.service';
 import { AirtagIdDto } from 'src/common/dto/airtag/airtag-id.dto';
 import { AirtagCreateDto } from 'src/common/dto/airtag/airtag-create.dto';
@@ -25,8 +25,8 @@ export class AirtagController {
     return this._airtag.updateLocation(locationUpdate);
   }
 
-  @Post('location')
-  public getLocation(@Body() airtagLocation: AirtagIdDto): Promise<PositionDto> {
-    return this._airtag.getAirtagLocation(airtagLocation);
+  @Get('location/:airtagId')
+  public getLocation(@Param('airtagId') airtagId: AirtagIdDto): Promise<PositionDto> {
+    return this._airtag.getAirtagLocation(airtagId);
   }
 }
