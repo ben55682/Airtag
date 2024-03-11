@@ -39,7 +39,7 @@ export class AirtagService {
   }
 
   public async getAirtagLocation(airtagId: number):Promise<PositionDto> {
-    return this._airtagModel.findById(airtagId).exec().then(res=>{
+    return this._airtagModel.findOne({airtagId : airtagId}).exec().then(res=>{
       return {latitude:res.latitude,longitude:res.longitude}; 
     })
   }
